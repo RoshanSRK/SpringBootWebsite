@@ -32,6 +32,7 @@ public class UserService {
             throw new IllegalStateException("email taken");
         }
         userRepository.save(user);
+
 //        System.out.println(user);
     }
 
