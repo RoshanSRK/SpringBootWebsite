@@ -16,12 +16,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping()
+    @CrossOrigin //eliminates the CORS error when viewing logs
+    @GetMapping("/all")
     public List<User> getUsers() {
         return userService.getUsers();
     }
 
-    @PostMapping()
+    @CrossOrigin
+    @PostMapping("/save")
     public void registerNewUser(@RequestBody User user){
         userService.addNewUser(user);
     }
@@ -39,7 +41,6 @@ public class UserController {
             @RequestParam(required = false) String password){
                 userService.updateUser(userId, name, email, password);
     }
-
 
 
 
