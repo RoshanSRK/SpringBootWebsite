@@ -16,20 +16,14 @@
 	<properties>
 		<java.version>20</java.version>
 	</properties>
-<!--	Add new repository for swagger dependencies-->
-<!--	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-		</repository>
-	</repositories>-->
 
 	<dependencies>
+<!--		Spring data JPA-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+<!--		Spring web-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -41,19 +35,12 @@
 			<version>8.0.0.Final</version>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>org.postgresql</groupId>-->
-<!--			<artifactId>postgresql</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
-
-<!--Swagger dependency start-->
+<!--Swagger dependency -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.1.0</version>
 		</dependency>
-<!--Swagger depencency ends-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
