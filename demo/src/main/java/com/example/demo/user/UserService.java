@@ -3,11 +3,7 @@ package com.example.demo.user;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.IllegalFormatWidthException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,6 +63,11 @@ public class UserService {
                 throw new IllegalStateException("Email taken");
             }
             user.setEmail(email);
+        }
+        if (password!= null &&
+                password.length() > 0 &&
+                !password.equals(user.getPassword())){
+            user.setPassword(password);
         }
     }
 
