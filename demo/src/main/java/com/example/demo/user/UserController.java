@@ -28,6 +28,10 @@ public class UserController {
         userService.addNewUser(user);
     }
 
+    @CrossOrigin
+    @PostMapping("/validate")
+    public void ValidateUser(@RequestBody User user){ userService.findUser(user);}
+
    @DeleteMapping(path = "{userId}")
     public void deleteUser(@PathVariable("userId") Long userId){
         userService.deleteUser(userId);

@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.IllegalFormatWidthException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -29,7 +30,7 @@ public class UserService {
                 userRepository.findUserByEmail(user.getEmail());
 
         if(userOptional.isPresent()){
-            throw new IllegalStateException("email taken");
+            throw new IllegalStateException("Email taken");
         }
         userRepository.save(user);
 
@@ -63,9 +64,25 @@ public class UserService {
                     userRepository.findUserByEmail(email );
 
             if(userOptional.isPresent()){
-                throw new IllegalStateException("email taken");
+                throw new IllegalStateException("Email taken");
             }
             user.setEmail(email);
+        }
+    }
+
+    public void findUser(User user) {
+//        String userEmail = user.getEmail();
+        Optional<User> userFound =
+                userRepository.findUserByEmail(user.getEmail());
+
+        if(userFound.isPresent()){
+            String repoPass = (userFound.get()).getPassword();
+            if(!Objects.equals(user.getPassword(), repoPass)){
+                throw new IllegalStateException("Email and password do not match!");
+            }
+        }
+        else{
+            throw new IllegalStateException("User does not exist");
         }
     }
 }
