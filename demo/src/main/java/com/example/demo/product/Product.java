@@ -4,7 +4,7 @@ package com.example.demo.product;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "product")
 public class Product {
     @Id
     @SequenceGenerator(
@@ -16,14 +16,23 @@ public class Product {
             strategy = GenerationType.SEQUENCE,
             generator = "product-sequence"
     )
+    @Column(name = "product_id")
     private Long productId;
+    @Column(name = "product_name")
     private String productName;
+    @Column(name = "product_desc")
     private String productDesc;
+    @Column(name = "product_image1")
     private String productImage1;
+    @Column(name = "product_image2")
     private String productImage2;
+    @Column(name = "product_image3")
     private String productImage3;
+    @Column(name = "product_price")
     private int productPrice;
+    @Column(name = "product_category")
     private String productCategory;
+    @Column(name = "qty_in_stock")
     private int qtyInStock;
 
     public Product() {

@@ -1,5 +1,6 @@
 package com.example.demo.product;
 
+import com.example.demo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,54 @@ public class ProductService {
         productRepository.deleteById(productId);
     }
 
+
+    public List<Product> getMobile() {
+        List<Product> productFound =
+                productRepository.findProductByProductCategory("P");
+
+        if(!productFound.isEmpty()) {
+            return productFound;
+        }
+        else{
+            throw new IllegalStateException("No mobile phones found.");
+        }
+    }
+
+    public List<Product> getWearable() {
+//        return productRepository.findWearable();
+        List<Product> productFound =
+                productRepository.findProductByProductCategory("E");
+        productFound.addAll(productRepository.findProductByProductCategory("H"));
+        if(!productFound.isEmpty()) {
+            return productFound;
+        }
+        else{
+            throw new IllegalStateException("No wearables found.");
+        }
+    }
+    public List<Product> getCharger() {
+//        return productRepository
+        List<Product> productFound =
+                productRepository.findProductByProductCategory("C");
+
+        if(!productFound.isEmpty()) {
+            return productFound;
+        }
+        else{
+            throw new IllegalStateException("No chargers found.");
+        }
+    }
+
+    public List<Product> getOther() {
+        List<Product> productFound =
+                productRepository.findProductByProductCategory("O");
+
+        if(!productFound.isEmpty()) {
+            return productFound;
+        }
+        else{
+            throw new IllegalStateException("No chargers found.");
+        }
+    }
 
 }
