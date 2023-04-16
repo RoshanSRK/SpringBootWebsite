@@ -86,4 +86,13 @@ public class ProductService {
         }
     }
 
+    public Product getProductDetails(Long prodId) {
+        Optional<Product> product = productRepository.findById(prodId);
+        if(product.isPresent()) {
+            return product.get();
+        }
+        else{
+            throw new IllegalStateException("No products found.");
+        }
+    }
 }

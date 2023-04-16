@@ -1,10 +1,7 @@
 package com.example.demo.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +34,11 @@ public class ProductController {
     @CrossOrigin
     @GetMapping("/other")
     public List<Product> getOther(){ return productService.getOther();}
+
+    @CrossOrigin
+    @GetMapping("/product/{prodId}")
+    public Product getProductDetails(@PathVariable("prodId") Long prodId){
+        return productService.getProductDetails(prodId);}
 
 
 }

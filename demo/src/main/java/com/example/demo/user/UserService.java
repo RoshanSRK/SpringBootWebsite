@@ -1,5 +1,6 @@
 package com.example.demo.user;
 
+import jakarta.annotation.PreDestroy;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,5 +86,10 @@ public class UserService {
         else{
             throw new IllegalStateException("User does not exist");
         }
+    }
+
+    @PreDestroy
+    public void deleteAllData() {
+        userRepository.deleteAll();
     }
 }
